@@ -7,16 +7,20 @@ import java.util.List;
 
 public interface ProductService {
 
-    void saveProduct(ProductDTO productDTO);
+    void saveProduct(ProductDTO productDTO, Long productId);
 
     List<Product> findAllProducts();
 
-    Product findProductById(Long id);
+    public Long quantity();
+
+    Product findProductById(Long productId);
+
+//    List<Product> findProductByCategory(Long categoryId);
 
     void deleteAllProduct();
 
-    void deleteProductById(Long id);
+    void deleteProductById(Long productId);
 
-    void updateProduct(ProductDTO productDTO, Long id);
+    void updateProduct(ProductDTO productDTO, Long productId);
 
 }

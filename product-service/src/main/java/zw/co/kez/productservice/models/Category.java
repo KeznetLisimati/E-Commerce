@@ -14,14 +14,12 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "categories")
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long categoryId;
     private String name;
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    @JoinColumn(name = "category_category_id", referencedColumnName = "id")
-    @JsonManagedReference
-    private List<Product> products;
+    @OneToMany(mappedBy = "category")
+    private List<Product> product;
 }

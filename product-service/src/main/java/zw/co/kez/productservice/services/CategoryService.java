@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CategoryService {
 
-    void saveCategory(CategoryDTO categoryDTO);
+    public String saveCategory(CategoryDTO categoryDTO, Long categoryId);
 
     List<Category> findAllCategories();
 

@@ -5,7 +5,19 @@ spring:
   application:
     name: cart-service
 
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: root
+    username: root
+    url: jdbc:mysql://localhost:3306/online_store
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8060/eureka
+

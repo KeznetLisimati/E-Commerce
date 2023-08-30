@@ -1,9 +1,7 @@
 package zw.co.kez.productservice.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,19 +14,24 @@ import zw.co.kez.productservice.enums.ProductStatus;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "products")
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long productId;
     private String name;
+    @Column(length = 255,name = "description", nullable = true)
     private String description;
+    private double price;
     private int quantity;
+    private String dateCreated;
+    private String lastUpdated;
+    private String image;
     @Enumerated(EnumType.STRING)
     private ProductStatus productStatus;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id", referencedColumnName = "id")
-    @JsonBackReference
+    @JsonIgnoreProperties({"product","hibernateLazyInitializer", "handler"})
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "category")
     private Category category;
 
 }
