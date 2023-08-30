@@ -1,0 +1,11 @@
+server:
+  port: 6006
+
+spring:
+  application:
+    name: authorization-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8060/eureka
