@@ -1,0 +1,17 @@
+server:
+  port: 5001
+
+spring:
+  application:
+    name: getway-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8060/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include=*:
